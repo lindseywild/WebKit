@@ -97,3 +97,5 @@
 };
 
 HTMLInputElement includes PopoverInvokerElement;
+
+HTMLInputElement includes InvokeElement;

@@ -406,6 +406,56 @@ void HTMLFormControlElement::handlePopoverTargetAction() const
         target->showPopover(this);
 }
 
+HTMLElement* HTMLFormControlElement::invokeTargetElement() const
+{
+    auto canInvoke = [](const HTMLFormControlElement& element) -> bool {
+        if (!element.document().settings().invokeAttributeEnabled())
+            return false;
+        if (auto* inputElement = dynamicDowncast<HTMLInputElement>(element))
+            return inputElement->isTextButton() || inputElement->isImageButton();
+        return is<HTMLButtonElement>(element);
+    };
+
+    if (!canInvoke(*this))
+        return nullptr;
+
+    if (isDisabledFormControl())
+        return nullptr;
+
+    if (form() && isSubmitButton())
+        return nullptr;
+
+    auto* element = dynamicDowncast<HTMLElement>(getElementAttribute(invoketargetAttr));
+    if (element)
+        return element;
+    return nullptr;
+}
+
+const AtomString& HTMLFormControlElement::invokeAction() const
+{
+    auto value = attributeWithoutSynchronization(HTMLNames::invokeactionAttr);
+
+    // TODO: Check if empty
+    return value;
+}
+
+void HTMLFormControlElement::setInvokeAction(const AtomString& value)
+{
+    setAttributeWithoutSynchronization(HTMLNames::invokeactionAttr, value);
+}
+
+void HTMLFormControlElement::handleInvokeAction() const
+{
+    RefPtr target = invokeTargetElement();
+    if (!target)
+        return;
+
+    auto action = invokeAction();
+
+    // TODO: Fix
+    // target->handleInvokeInternal(this, action);
+}
+
 // FIXME: We should remove the quirk once <rdar://problem/47334655> is fixed.
 bool HTMLFormControlElement::needsMouseFocusableQuirk() const
 {
