@@ -207,6 +207,12 @@ bool defaultShouldConvertInvalidURLsToBlank()
     return shouldConvertInvalidURLsToBlank;
 }
 
+bool defaultInvokeAttributeEnabled()
+{
+    static bool newSDK = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::InvokeAttributeEnabled);
+    return newSDK;
+}
+
 bool defaultPopoverAttributeEnabled()
 {
     static bool newSDK = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::PopoverAttributeEnabled);

@@ -433,7 +433,7 @@ HTMLElement* HTMLFormControlElement::invokeTargetElement() const
 
 const AtomString& HTMLFormControlElement::invokeAction() const
 {
-    auto value = attributeWithoutSynchronization(HTMLNames::invokeactionAttr);
+    const AtomString& value = attributeWithoutSynchronization(HTMLNames::invokeactionAttr);
 
     // TODO: Check if empty
     return value;

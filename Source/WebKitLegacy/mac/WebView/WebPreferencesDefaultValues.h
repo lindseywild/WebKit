@@ -65,6 +65,7 @@ bool defaultUseLegacyBackgroundSizeShorthandBehavior();
 bool defaultAllowDisplayOfInsecureContent();
 bool defaultAllowRunningOfInsecureContent();
 bool defaultShouldConvertInvalidURLsToBlank();
+bool defaultInvokeAttributeEnabled();
 bool defaultPopoverAttributeEnabled();
 bool defaultSearchInputIncrementalAttributeAndSearchEventEnabled();
 

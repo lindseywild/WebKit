@@ -104,6 +104,7 @@ bool defaultLiveRangeSelectionEnabled();
 
 bool defaultShouldEnableScreenOrientationAPI();
 bool defaultPopoverAttributeEnabled();
+bool defaultInvokeAttributeEnabled();
 bool defaultUseGPUProcessForDOMRenderingEnabled();
 bool defaultSearchInputIncrementalAttributeAndSearchEventEnabled();
 

@@ -163,6 +163,16 @@ bool defaultCaptureAudioInUIProcessEnabled()
     return false;
 }
 
+bool defaultInvokeAttributeEnabled()
+{
+#if PLATFORM(COCOA)
+    static bool newSDK = linkedOnOrAfterSDKWithBehavior(SDKAlignedBehavior::InvokeAttributeEnabled);
+    return newSDK;
+#else
+    return true;
+#endif
+}
+
 bool defaultManageCaptureStatusBarInGPUProcessEnabled()
 {
 #if PLATFORM(IOS_FAMILY)
