@@ -435,7 +435,9 @@ const AtomString& HTMLFormControlElement::invokeAction() const
 {
     const AtomString& value = attributeWithoutSynchronization(HTMLNames::invokeactionAttr);
 
-    // TODO: Check if empty
+    if (!value || value.isNull() || value.isEmpty()) {
+        return autoAtom();
+    }
     return value;
 }
 
