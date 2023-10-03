@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Apple Inc. All rights reserved.
+ * Copyright (C) 2021 Apple Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -23,17 +23,35 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-[
-    EnabledBySetting=InvokeAttributeEnabled,
-    Exposed=Window
-] interface InvokeEvent : Event {
-    constructor([AtomString] DOMString type, optional InvokeEventInit eventInitDict);
+#pragma once
 
-    readonly attribute EventTarget? relatedTarget;
-    readonly attribute DOMString action;
+#include "Event.h"
+#include "EventInit.h"
+#include <wtf/Forward.h>
+
+namespace WebCore {
+
+class HTMLElement;
+
+class InvokeEvent : public Event {
+    WTF_MAKE_ISO_ALLOCATED(InvokeEvent);
+public:
+    struct Init : EventInit {
+        RefPtr<HTMLElement> submitter;
+    };
+
+    static Ref<InvokeEvent> create(const AtomString& type, Init&&);
+    static Ref<InvokeEvent> create(RefPtr<HTMLElement>&& submitter);
+
+    HTMLElement* submitter() const { return m_submitter.get(); }
+
+private:
+    InvokeEvent(const AtomString& type, Init&&);
+    explicit InvokeEvent(RefPtr<HTMLElement>&& submitter);
+
+    EventInterface eventInterface() const final;
+
+    RefPtr<HTMLElement> m_submitter;
 };
 
-dictionary InvokeEventInit : EventInit {
-    EventTarget? relatedTarget = null;
-    DOMString action = "auto";
-};
+} // namespace WebCore

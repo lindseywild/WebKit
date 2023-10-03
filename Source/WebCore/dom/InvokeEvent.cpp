@@ -23,17 +23,47 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-[
-    EnabledBySetting=InvokeAttributeEnabled,
-    Exposed=Window
-] interface InvokeEvent : Event {
-    constructor([AtomString] DOMString type, optional InvokeEventInit eventInitDict);
+#include "config.h"
+#include "InvokeEvent.h"
 
-    readonly attribute EventTarget? relatedTarget;
-    readonly attribute DOMString action;
-};
+#include <wtf/IsoMallocInlines.h>
 
-dictionary InvokeEventInit : EventInit {
-    EventTarget? relatedTarget = null;
-    DOMString action = "auto";
-};
+namespace WebCore {
+
+WTF_MAKE_ISO_ALLOCATED_IMPL(InvokeEvent);
+
+InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer, Event::IsCancelable cancelable)
+    : Event(type, Event::CanBubble::No, cancelable, Event::IsComposed::No)
+    , m_oldState(initializer.oldState)
+    , m_newState(initializer.newState)
+{
+}
+
+InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer)
+    : Event(type, initializer, IsTrusted::No)
+    , m_oldState(initializer.oldState)
+    , m_newState(initializer.newState)
+{
+}
+
+Ref<InvokeEvent> InvokeEvent::create(const AtomString& eventType, const InvokeEvent::Init& init, Event::IsCancelable cancelable)
+{
+    return adoptRef(*new InvokeEvent(eventType, init, cancelable));
+}
+
+Ref<InvokeEvent> InvokeEvent::create(const AtomString& eventType, const InvokeEvent::Init& init)
+{
+    return adoptRef(*new InvokeEvent(eventType, init));
+}
+
+Ref<InvokeEvent> InvokeEvent::createForBindings()
+{
+    return adoptRef(*new InvokeEvent);
+}
+
+EventInterface InvokeEvent::eventInterface() const
+{
+    return InvokeEventInterfaceType;
+}
+
+} // namespace WebCore
