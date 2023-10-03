@@ -1231,6 +1231,7 @@ set(WebCore_NON_SVG_IDL_FILES
     html/ImageData.idl
     html/ImageDataSettings.idl
     html/InvokeElement.idl
+    html/InvokeEvent.idl
     html/MediaController.idl
     html/MediaEncryptedEvent.idl
     html/MediaError.idl

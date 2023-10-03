@@ -1233,6 +1233,7 @@ JS_BINDING_IDLS := \
     $(WebCore)/html/ImageData.idl \
     $(WebCore)/html/ImageDataSettings.idl \
     $(WebCore)/html/InvokeElement.idl \
+    $(WebCore)/html/InvokeEvent.idl \
     $(WebCore)/html/MediaController.idl \
     $(WebCore)/html/MediaEncryptedEvent.idl \
     $(WebCore)/html/MediaError.idl \
