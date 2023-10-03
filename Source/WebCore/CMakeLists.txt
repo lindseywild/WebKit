@@ -1071,6 +1071,7 @@ set(WebCore_NON_SVG_IDL_FILES
     dom/IdleRequestOptions.idl
     dom/InnerHTML.idl
     dom/InputEvent.idl
+    dom/InvokeEvent.idl
     dom/KeyboardEvent.idl
     dom/MessageChannel.idl
     dom/MessageEvent.idl
@@ -1231,7 +1232,6 @@ set(WebCore_NON_SVG_IDL_FILES
     html/ImageData.idl
     html/ImageDataSettings.idl
     html/InvokeElement.idl
-    html/InvokeEvent.idl
     html/MediaController.idl
     html/MediaEncryptedEvent.idl
     html/MediaError.idl

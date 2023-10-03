@@ -33,25 +33,29 @@ namespace WebCore {
 
 class HTMLElement;
 
-class InvokeEvent : public Event {
+class InvokeEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(InvokeEvent);
 public:
     struct Init : EventInit {
-        RefPtr<HTMLElement> submitter;
+        RefPtr<EventTarget> relatedTargrt;
+        String action;
     };
 
-    static Ref<InvokeEvent> create(const AtomString& type, Init&&);
-    static Ref<InvokeEvent> create(RefPtr<HTMLElement>&& submitter);
+    static Ref<InvokeEvent> create(const AtomString& type, const Init&);
+    static Ref<InvokeEvent> create(RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
 
-    HTMLElement* submitter() const { return m_submitter.get(); }
+    EventTarget* relatedTarget() const final { return m_relatedTarget.get(); }
+    String action() const final { return m_action; }
 
 private:
-    InvokeEvent(const AtomString& type, Init&&);
-    explicit InvokeEvent(RefPtr<HTMLElement>&& submitter);
+    InvokeEvent(const AtomString& type, const Init&);
 
     EventInterface eventInterface() const final;
 
-    RefPtr<HTMLElement> m_submitter;
+    void setRelatedTarget(RefPtr<EventTarget>&& relatedTarget) final { m_relatedTarget = WTFMove(relatedTarget); }
+
+    RefPtr<EventTarget> m_relatedTarget;
+    String m_action;
 };
 
 } // namespace WebCore

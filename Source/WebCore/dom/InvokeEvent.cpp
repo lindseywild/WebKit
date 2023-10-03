@@ -32,29 +32,32 @@ namespace WebCore {
 
 WTF_MAKE_ISO_ALLOCATED_IMPL(InvokeEvent);
 
-InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer, Event::IsCancelable cancelable)
-    : Event(type, Event::CanBubble::No, cancelable, Event::IsComposed::No)
-    , m_oldState(initializer.oldState)
-    , m_newState(initializer.newState)
+InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer)
+    : Event(type, initializer, IsTrusted::No)
+    , m_relatedTarget(initializer.relatedTarget)
+    , m_action(initializer.action)
 {
 }
 
 InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer)
     : Event(type, initializer, IsTrusted::No)
-    , m_oldState(initializer.oldState)
-    , m_newState(initializer.newState)
+    , m_relatedTarget(initializer.relatedTarget)
+    , m_action(initializer.action)
 {
-}
-
-Ref<InvokeEvent> InvokeEvent::create(const AtomString& eventType, const InvokeEvent::Init& init, Event::IsCancelable cancelable)
-{
-    return adoptRef(*new InvokeEvent(eventType, init, cancelable));
 }
 
 Ref<InvokeEvent> InvokeEvent::create(const AtomString& eventType, const InvokeEvent::Init& init)
 {
     return adoptRef(*new InvokeEvent(eventType, init));
 }
+
+Ref<InvokeEvent> create(RefPtr<EventTarget>&& relatedTarget, const AtomString& action)
+{
+    : Event(type, Event::CanBubble::No, , Event::IsCancelable::Yes, Event::IsComposed::No)
+    , m_relatedTarget(initializer.relatedTarget)
+    , m_action(initializer.action)
+}
+
 
 Ref<InvokeEvent> InvokeEvent::createForBindings()
 {
