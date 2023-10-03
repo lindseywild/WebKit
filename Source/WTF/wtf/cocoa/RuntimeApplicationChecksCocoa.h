@@ -59,6 +59,7 @@ enum class SDKAlignedBehavior {
     HTMLDocumentSupportedPropertyNames,
     InitializeWebKit2MainThreadAssertion,
     InspectableDefaultsToDisabled,
+    InvokeAttributeEnabled,
     LazyGestureRecognizerInstallation,
     LinkPreviewEnabledByDefault,
     MainThreadReleaseAssertionInWebPageProxy,
