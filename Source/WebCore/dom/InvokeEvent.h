@@ -37,7 +37,7 @@ class InvokeEvent final : public Event {
     WTF_MAKE_ISO_ALLOCATED(InvokeEvent);
 public:
     struct Init : EventInit {
-        RefPtr<EventTarget> relatedTargrt;
+        RefPtr<EventTarget> relatedTarget;
         String action;
     };
 
