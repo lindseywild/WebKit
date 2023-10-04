@@ -42,13 +42,17 @@ public:
     };
 
     static Ref<InvokeEvent> create(const AtomString& type, const Init&);
-    static Ref<InvokeEvent> create(RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
+    static Ref<InvokeEvent> create(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
+    static Ref<InvokeEvent> createForBindings();
 
     EventTarget* relatedTarget() const final { return m_relatedTarget.get(); }
-    String action() const final { return m_action; }
+    // String action() const final { return m_action; }
+    String action() const { return m_action; }
 
 private:
+    InvokeEvent() = default;
     InvokeEvent(const AtomString& type, const Init&);
+    InvokeEvent(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
 
     EventInterface eventInterface() const final;
 
