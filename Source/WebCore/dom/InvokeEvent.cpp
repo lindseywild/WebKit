@@ -39,28 +39,9 @@ InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initia
 {
 }
 
-// InvokeEvent::InvokeEvent(const AtomString& type, const InvokeEvent::Init& initializer)
-//     : Event(type, initializer, IsTrusted::No)
-//     , m_relatedTarget(initializer.relatedTarget)
-//     , m_action(initializer.action)
-// {
-// }
-
 Ref<InvokeEvent> InvokeEvent::create(const AtomString& eventType, const InvokeEvent::Init& init)
 {
     return adoptRef(*new InvokeEvent(eventType, init));
-}
-
-// Ref<InvokeEvent> InvokeEvent::create(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action)
-//     : Event(type, Event::CanBubble::No, Event::IsCancelable::Yes, Event::IsComposed::No)
-//     , m_relatedTarget(WTFMove(relatedTarget))
-//     , m_action(action)
-// {
-// }
-
-Ref<InvokeEvent> InvokeEvent::create(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action)
-{
-    return adoptRef(*new InvokeEvent(type, WTFMove(relatedTarget), action));
 }
 
 Ref<InvokeEvent> InvokeEvent::createForBindings()

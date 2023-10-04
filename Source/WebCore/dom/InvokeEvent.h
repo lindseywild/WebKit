@@ -42,7 +42,6 @@ public:
     };
 
     static Ref<InvokeEvent> create(const AtomString& type, const Init&);
-    static Ref<InvokeEvent> create(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
     static Ref<InvokeEvent> createForBindings();
 
     EventTarget* relatedTarget() const final { return m_relatedTarget.get(); }
@@ -52,7 +51,6 @@ public:
 private:
     InvokeEvent() = default;
     InvokeEvent(const AtomString& type, const Init&);
-    InvokeEvent(const AtomString& type, RefPtr<EventTarget>&& relatedTarget, const AtomString& action);
 
     EventInterface eventInterface() const final;
 
