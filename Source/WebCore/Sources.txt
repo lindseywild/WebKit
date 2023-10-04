@@ -1125,6 +1125,7 @@ dom/ImageOverlay.cpp
 dom/InlineClassicScript.cpp
 dom/InlineStyleSheetOwner.cpp
 dom/InputEvent.cpp
+dom/InvokeEvent.cpp
 dom/KeyboardEvent.cpp
 dom/LiveNodeList.cpp
 dom/LoadableClassicScript.cpp
@@ -3783,6 +3784,7 @@ JSIntersectionObserver.cpp
 JSIntersectionObserverCallback.cpp
 JSIntersectionObserverEntry.cpp
 JSIterationCompositeOperation.cpp
+JSInvokeEvent.cpp
 JSJsonWebKey.cpp
 JSKeyboardEvent.cpp
 JSKeyframeAnimationOptions.cpp
