@@ -1,0 +1,35 @@
+
+
+PASS the event is an instance of InvokeEvent
+PASS the event inherits from Event
+PASS Missing type argument
+PASS type argument is string
+PASS type argument is null
+PASS event type set to undefined
+PASS action has default value of 'auto'
+PASS action is readonly
+PASS relatedTarget has default value of null
+PASS relatedTarget is readonly
+PASS InvokeEventInit argument is null
+PASS InvokeEventInit argument is undefined
+PASS InvokeEventInit argument is empty dictionary
+PASS action set to 'sample'
+PASS action set to undefined
+PASS action set to null
+PASS action set to false
+PASS action set to true
+PASS action set to a number
+PASS action set to []
+PASS action set to [1, 2, 3]
+PASS action set to an object
+PASS action set to an object with a valueOf function
+PASS InvokeEventInit properties set value
+PASS InvokeEventInit properties set value 2
+PASS InvokeEventInit properties set value 3
+PASS InvokeEventInit properties set value 4
+PASS relatedTarget set to undefined
+PASS relatedTarget set to null
+PASS relatedTarget set to false
+PASS relatedTarget set to true
+PASS relatedTarget set to {}
+
