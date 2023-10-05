@@ -454,8 +454,7 @@ void HTMLFormControlElement::handleInvokeAction() const
 
     auto action = invokeAction();
 
-    // TODO: Fix
-    // target->handleInvokeInternal(this, action);
+    target->handleInvokeInternal(this, action);
 }
 
 // FIXME: We should remove the quirk once <rdar://problem/47334655> is fixed.

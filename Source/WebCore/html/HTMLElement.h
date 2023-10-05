@@ -26,6 +26,7 @@
 #include "Document.h"
 #include "HTMLNames.h"
 #include "InputMode.h"
+#include "InvokeEvent.h"
 #include "StyledElement.h"
 
 #if ENABLE(AUTOCAPITALIZE)
@@ -158,6 +159,10 @@ public:
     const AtomString& popover() const;
     void setPopover(const AtomString& value) { setAttributeWithoutSynchronization(HTMLNames::popoverAttr, value); };
     void popoverAttributeChanged(const AtomString& value);
+
+
+    bool FireInvokeEvent(Element* invoker, const AtomString& action) const;
+    virtual void handleInvokeInternal(Element* invoker, const AtomString& action) const { FireInvokeEvent(invoker, action); }
 
 #if PLATFORM(IOS_FAMILY)
     static SelectionRenderingBehavior selectionRenderingBehavior(const Node*);

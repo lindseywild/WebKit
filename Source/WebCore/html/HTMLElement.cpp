@@ -1555,6 +1555,18 @@ PopoverState HTMLElement::popoverState() const
     return popoverData() ? popoverData()->popoverState() : PopoverState::None;
 }
 
+
+bool HTMLElement::FireInvokeEvent(Element* invoker, const AtomString& action) const {
+    InvokeEvent::Init init;
+    init.bubbles = false;
+    init.cancelable = true;
+    init.relatedTarget = invoker;
+    init.action = action;
+    Ref<InvokeEvent> event = InvokeEvent::create(eventNames().invoke, init);
+    dispatchEvent(event);
+    return event->defaultPrevented();
+}
+
 #if PLATFORM(IOS_FAMILY)
 
 SelectionRenderingBehavior HTMLElement::selectionRenderingBehavior(const Node* node)
