@@ -446,7 +446,7 @@ void HTMLFormControlElement::setInvokeAction(const AtomString& value)
     setAttributeWithoutSynchronization(HTMLNames::invokeactionAttr, value);
 }
 
-void HTMLFormControlElement::handleInvokeAction() const
+void HTMLFormControlElement::handleInvokeAction()
 {
     RefPtr target = invokeTargetElement();
     if (!target)

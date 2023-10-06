@@ -161,8 +161,8 @@ public:
     void popoverAttributeChanged(const AtomString& value);
 
 
-    bool FireInvokeEvent(Element* invoker, const AtomString& action) const;
-    virtual void handleInvokeInternal(Element* invoker, const AtomString& action) const { FireInvokeEvent(invoker, action); }
+    bool FireInvokeEvent(Element* invoker, const AtomString& action);
+    virtual void handleInvokeInternal(Element* invoker, const AtomString& action) { FireInvokeEvent(invoker, action); }
 
 #if PLATFORM(IOS_FAMILY)
     static SelectionRenderingBehavior selectionRenderingBehavior(const Node*);

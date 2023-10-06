@@ -1556,13 +1556,13 @@ PopoverState HTMLElement::popoverState() const
 }
 
 
-bool HTMLElement::FireInvokeEvent(Element* invoker, const AtomString& action) const {
+bool HTMLElement::FireInvokeEvent(Element* invoker, const AtomString& action) {
     InvokeEvent::Init init;
     init.bubbles = false;
     init.cancelable = true;
     init.relatedTarget = invoker;
     init.action = action;
-    Ref<InvokeEvent> event = InvokeEvent::create(eventNames().invoke, init);
+    Ref<InvokeEvent> event = InvokeEvent::create(eventNames().invokeEvent, init);
     dispatchEvent(event);
     return event->defaultPrevented();
 }
